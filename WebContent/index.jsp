@@ -63,7 +63,14 @@
 		</style>
 	</head>
 	<body>
-	
+		
+		
+		
+		<img width=100 height=100 src="/WebContent/email-icon.jpg">
+		
+	 
+		
+		
 		<div class="title-container">
 			<br/>
 			<div class="title">
@@ -75,7 +82,7 @@
 
 		<div class="main">
 			
-				
+		
 					<div class="main-col-1">
 							<h2>Welcome to Mailservices!</h2>
 							<p>Here we are providing a free <b>Mail Service</b> for all the employees<br>
