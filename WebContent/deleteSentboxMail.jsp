@@ -8,8 +8,11 @@ String id=request.getParameter("id");
 if(id.length()>0){
 try{
 out.print("<br>");
-int res=SentBoxService.deleteById(Integer.parseInt(id));
-out.print("Mail has been successfully deleted");
+int res=BinService.addSentBoxMailtoBin(Integer.parseInt(id));
+if(res>0)
+	out.print("Mail has been successfully deleted");
+else
+	out.print("Error in deleting your mail");
 }catch(Exception e){e.printStackTrace();}
 }
 %>

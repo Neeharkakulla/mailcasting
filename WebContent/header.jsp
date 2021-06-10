@@ -26,6 +26,8 @@
 				<a class="nav-item nav-link" href="compose.jsp">Compose Mail</a>
 				<a class="nav-item nav-link" href="home.jsp">Inbox</a>
 				<a class="nav-item nav-link" href="sent.jsp">Sent</a>
+				<a class="nav-item nav-link" href="bin.jsp">Bin</a>
+				
 				<a class="nav-item nav-link" href="logout">LogOut</a>
 				<a class="nav-item nav-link" href="contactus.jsp">Contact Us</a>
 

@@ -31,7 +31,7 @@ public class SentBoxModel {
 	}
 	@Override
 	public String toString() {
-		return "InBoxModel [id=" + id + ", reciever=" + reciever + ", sender=" + sender + ", message=" + message
+		return "SentBoxModel [id=" + id + ", reciever=" + reciever + ", sender=" + sender + ", message=" + message
 				+ ", date=" + date + ", subject=" + subject + "]";
 	}
 	public int getId() {
