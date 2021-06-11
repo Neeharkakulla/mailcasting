@@ -49,6 +49,9 @@ public class MailCastingController extends HttpServlet {
 			case "/validate":
 				validatePassword(request,response);
 				break;
+			case "/newPasswordRequest":
+				changePassword(request,response);
+				break;
 			default:
 					showHome(request,response);
 					break;
@@ -57,25 +60,6 @@ public class MailCastingController extends HttpServlet {
 			
 	}
 	
-	private void validatePassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id=Integer.parseInt(request.getParameter("id"));
-		
-		String password=request.getParameter("password");
-		System.out.println(VerifyLogin.validatePassword(id,password));
-	
-		if(VerifyLogin.validatePassword(id,password)) {
-			request.setAttribute("success", "success");
-			RequestDispatcher rd=request.getRequestDispatcher("myProfile.jsp");
-			rd.include(request, response);
-		}
-		else {
-			request.setAttribute("success", "Invalid");
-			RequestDispatcher rd=request.getRequestDispatcher("myProfile.jsp");
-			rd.include(request, response);
-		}
-		
-		
-	}
 	private void showHome(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");
 		rd.forward(request, response);	
@@ -146,6 +130,39 @@ public class MailCastingController extends HttpServlet {
 		}
 		
 	}
+	private void validatePassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id=Integer.parseInt(request.getParameter("id"));
+		
+		String password=request.getParameter("password");
+	
+	
+		if(VerifyLogin.validatePassword(id,password)) {
+			request.setAttribute("success", "success");
+			
+			RequestDispatcher rd=request.getRequestDispatcher("myProfile.jsp");
+			rd.include(request, response);
+		}
+		else {
+			request.setAttribute("success", "Invalid");
+			RequestDispatcher rd=request.getRequestDispatcher("myProfile.jsp");
+			rd.include(request, response);
+		}
+		
+		
+	}
+
+	private void changePassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id=Integer.parseInt(request.getParameter("id"));
+		String password=request.getParameter("password");
+		if(VerifyLogin.changePassword(id,password)) {
+			request.setAttribute("newPassword", true);
+			request.setAttribute("sucsess", null);
+			RequestDispatcher rd=request.getRequestDispatcher("myProfile.jsp");
+			rd.include(request, response);
+			
+		}
+		
+	}
 
 	
 	private void registerUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -160,7 +177,7 @@ public class MailCastingController extends HttpServlet {
 		
 		String country=request.getParameter("country");
 		
-		UserModel user=new UserModel(email, password, name, contact, gender, country);
+		UserModel user=new UserModel(email, password, name, gender, contact, country);
 		
 		int status=RegisterUser.register(user);
 		if(status>0){

@@ -112,7 +112,7 @@
 											</td>
 										</tr>
 										<tr><td>Contact Number:</td></tr>
-										<tr><td> <input class="inputBox" type="text" name="mname"/><br/><br/></td></tr>
+										<tr><td> <input class="inputBox" type="text" name="contact"/><br/><br/></td></tr>
 										<tr><td>Country: </td></tr>
 										<tr><td><input class="inputBox" type="text" name="country"/><br/><br/></td></tr>
 										<tr><td><input type="submit" value="Submit" class="btn-signin"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

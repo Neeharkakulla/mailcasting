@@ -40,4 +40,21 @@ public static boolean validatePassword(int id, String password) {
 	}
 	return false;
 }
+
+public static boolean changePassword(int id, String password) {
+	Connection con=DBConnection.getCon();
+	try {
+		PreparedStatement ps=con.prepareStatement("UPDATE MAILCASTINGUSER SET password=? WHERE id =?");
+		
+		ps.setString(1, password);
+		ps.setInt(2, id);
+		int res=ps.executeUpdate();
+		if(res>0)
+			return true;
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return false;
+}
 }
