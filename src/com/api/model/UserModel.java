@@ -8,7 +8,7 @@ public class UserModel {
 	private String contact;
 	private String gender;
 	private String country;
-	public UserModel(int id, String email, String password, String name, String contact, String gender,
+	public UserModel(int id, String email, String password, String name, String gender, String contact,
 			String country) {
 		super();
 		this.id = id;
@@ -19,7 +19,7 @@ public class UserModel {
 		this.gender = gender;
 		this.country = country;
 	}
-	public UserModel(String email, String password, String name, String contact, String gender, String country) {
+	public UserModel(String email, String password, String name, String gender, String contact, String country) {
 		super();
 		this.email = email;
 		this.password = password;

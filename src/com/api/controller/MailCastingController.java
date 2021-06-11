@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.api.model.UserModel;
+import com.api.service.BinService;
 import com.api.service.RegisterUser;
 import com.api.service.SendMessage;
 import com.api.service.VerifyLogin;
@@ -46,6 +47,16 @@ public class MailCastingController extends HttpServlet {
 			case "/composeEmail":
 				composeEmail(request,response);
 				break;
+			case "/validate":
+				validatePassword(request,response);
+				break;
+			case "/newPasswordRequest":
+				changePassword(request,response);
+				break;
+			case "/retriveMail":
+				retriveFromBin(request,response);
+				break;
+				
 			default:
 					showHome(request,response);
 					break;
@@ -53,6 +64,7 @@ public class MailCastingController extends HttpServlet {
 
 			
 	}
+	
 	
 	private void showHome(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");
@@ -124,6 +136,39 @@ public class MailCastingController extends HttpServlet {
 		}
 		
 	}
+	private void validatePassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id=Integer.parseInt(request.getParameter("id"));
+		
+		String password=request.getParameter("password");
+	
+	
+		if(VerifyLogin.validatePassword(id,password)) {
+			request.setAttribute("success", "success");
+			
+			RequestDispatcher rd=request.getRequestDispatcher("myProfile.jsp");
+			rd.include(request, response);
+		}
+		else {
+			request.setAttribute("success", "Invalid");
+			RequestDispatcher rd=request.getRequestDispatcher("myProfile.jsp");
+			rd.include(request, response);
+		}
+		
+		
+	}
+
+	private void changePassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id=Integer.parseInt(request.getParameter("id"));
+		String password=request.getParameter("password");
+		if(VerifyLogin.changePassword(id,password)) {
+			request.setAttribute("newPassword", true);
+			request.setAttribute("sucsess", null);
+			RequestDispatcher rd=request.getRequestDispatcher("myProfile.jsp");
+			rd.include(request, response);
+			
+		}
+		
+	}
 
 	
 	private void registerUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -138,7 +183,7 @@ public class MailCastingController extends HttpServlet {
 		
 		String country=request.getParameter("country");
 		
-		UserModel user=new UserModel(email, password, name, contact, gender, country);
+		UserModel user=new UserModel(email, password, name, gender, contact, country);
 		
 		int status=RegisterUser.register(user);
 		if(status>0){
@@ -155,6 +200,21 @@ public class MailCastingController extends HttpServlet {
 		}
 		
 	}
+	}
+	private void retriveFromBin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id=Integer.parseInt(request.getParameter("id"));
+			String type=BinService.retriveFromBin(id);
+			if(type.equalsIgnoreCase("inbox")) {
+			RequestDispatcher rd=request.getRequestDispatcher("home.jsp");
+			rd.forward(request, response);
+			}
+			if(type.equalsIgnoreCase("sentbox")) {
+				RequestDispatcher rd=request.getRequestDispatcher("sent.jsp");
+				rd.forward(request, response);
+				}
+		
+		
+		
 	}
 		
 	}

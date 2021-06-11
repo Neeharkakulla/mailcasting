@@ -63,7 +63,13 @@
 		</style>
 	</head>
 	<body>
-	
+		
+		
+		
+		
+	 
+		
+		
 		<div class="title-container">
 			<br/>
 			<div class="title">
@@ -75,7 +81,7 @@
 
 		<div class="main">
 			
-				
+		
 					<div class="main-col-1">
 							<h2>Welcome to Mailservices!</h2>
 							<p>Here we are providing a free <b>Mail Service</b> for all the employees<br>
@@ -95,19 +101,17 @@
 										}
 										
 										if(request.getAttribute("Error1")!=null){
-										System.out.print(request.getAttribute("Error1"));
+										
 										String Error1=(String)request.getAttribute("Error1");
 										out.print("<font style='color:red'>"+Error1+"</font>");
 										
 										
 										}
 										if(request.getAttribute("register")!=null){
-										System.out.print(request.getAttribute("register"));
 										String register=(String)request.getAttribute("register");
 										out.print("<font style='color:navy'>"+register+"</font>");
 										}
 										if(request.getAttribute("logout")!=null){
-										System.out.print(request.getAttribute("logout"));
 										String logout=(String)request.getAttribute("logout");
 										out.print("<font style='color:navy'>"+logout+"</font>");
 										} 

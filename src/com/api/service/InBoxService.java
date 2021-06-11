@@ -69,5 +69,21 @@ public class InBoxService {
 		return mail;
 		
 	}
+	public static void retriveMail(InBoxModel mail) {
+		try {
+			Connection con=DBConnection.getCon();
+			PreparedStatement ps=con.prepareStatement("Insert into INBOX(reciever,sender,message,date,subject) values(?,?,?,?,?)");
+			ps.setString(1,mail.getReciever());
+			ps.setString(2,mail.getSender());
+			ps.setString(3,mail.getMessage());
+			ps.setTimestamp(4,mail.getDate());
+			ps.setString(5, mail.getSubject());
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}	
+	}
 
 }

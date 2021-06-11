@@ -1,11 +1,10 @@
 		<%@ page import="java.sql.*,com.api.model.*,com.api.service.*,java.text.*"%>  
-			
-			
+		
 		<%  
 		String s=request.getParameter("id");  
 		int id=Integer.parseInt(s);  
 		
-		InBoxModel mail=InBoxService.getMailById(id);
+		BinModel mail=BinService.getMailById(id);
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		String date=formatter.format(mail.getDate());
 		 

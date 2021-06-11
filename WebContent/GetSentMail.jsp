@@ -14,7 +14,7 @@ out.print("<h3>"+mail.getSubject()+"</h3>");
 out.print("<p>from :"+mail.getSender()+"</p>");
 out.print("<p>to :"+mail.getReciever()+"</p>");
 out.print("<p>Date :"+date+"</p>");
-out.print("<p style='text-align: justify' >messsage <br><br>"+mail.getMessage()+"</p>");
+out.print("<p style='white-space: pre-line' >messsage <br><br>"+mail.getMessage()+"</p>");
  
 }catch(Exception e){e.printStackTrace();}  
 

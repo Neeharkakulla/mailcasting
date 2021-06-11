@@ -23,17 +23,17 @@
 				int id=m.getId();
 				String date=formatter.format(m.getDate());
 				out.print("<tr onclick='viewMail("+id+")'>");
-			if(m.getSender().length()>8)
-			out.print("<td>" + m.getSender().substring(0,8) + "....</td>");
+			if(m.getSender().length()>=5)
+			out.print("<td>" + m.getSender().substring(0,5) + "....</td>");
 				else
 			out.print("<td>" + m.getSender() + "</td>");
 				
-				if(m.getSubject().length()>5)
-			out.print("<td>" + m.getSubject().substring(0,8) + "....</td>");
+				if(m.getSubject().length()>=5)
+			out.print("<td>" + m.getSubject().substring(0,5) + "....</td>");
 				else
 			out.print("<td>" + m.getSubject() + "</td>");
 
-				if(m.getMessage().length()>5)
+				if(m.getMessage().length()>=5)
 			out.print("<td>" + m.getMessage().substring(0,5) + "......</td>");
 				else
 			out.print("<td>" + m.getMessage() + "</td>");

@@ -2,6 +2,7 @@ package com.api.service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.api.configuration.DBConnection;
@@ -34,5 +35,23 @@ public static int register(UserModel user){
 	}
 	return status;
 	
+}
+public static UserModel getUserByEmail(String email) {
+	
+	try {
+		Connection con=DBConnection.getCon();
+		PreparedStatement ps=con.prepareStatement("select * from MAILCASTINGUSER where email=?");
+		ps.setString(1, email);
+		ResultSet rs=ps.executeQuery();
+		if(rs.next()) 
+			return new UserModel(rs.getInt(1),rs.getString(2),
+					"",rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7));
+		
+	} catch (SQLException e) {
+		
+		e.printStackTrace();
+	}	
+	
+	return null;
 }
 }
