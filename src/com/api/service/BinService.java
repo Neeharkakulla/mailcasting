@@ -32,7 +32,7 @@ public class BinService {
 	public static BinModel getMailById(int id) {
 		BinModel mail=null;
 		try {
-			System.out.println(id);
+			
 			Connection con=DBConnection.getCon();
 			PreparedStatement ps = con.prepareStatement("Select *  from bin where id=?");
 			ps.setInt(1, id);
@@ -42,7 +42,7 @@ public class BinService {
 						,rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6)
 						,rs.getString(7),rs.getTimestamp(8),rs.getString(9));
 			
-			System.out.println(mail);
+			
 			
 			return mail;
 			
