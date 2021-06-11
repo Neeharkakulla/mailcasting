@@ -136,4 +136,18 @@ public class BinService {
 		}
 		return 0;
 	}
+	public static String retriveFromBin(int id) {
+		
+		BinModel mail=BinService.getMailById(id);
+		if(mail.getType().equalsIgnoreCase("inbox")) {
+		InBoxService.retriveMail(new InBoxModel(mail.getReciever(),mail.getSender()
+				,mail.getMessage(),mail.getDate(),mail.getSubject()));
+		}
+		else if(mail.getType().equalsIgnoreCase("sentbox")) {
+			SentBoxService.retriveMail(new SentBoxModel(mail.getReciever(),mail.getSender()
+					,mail.getMessage(),mail.getDate(),mail.getSubject()));
+			}
+		BinService.deleteByBinId(id);
+		return mail.getType();
+	}
 }

@@ -65,7 +65,7 @@
 			out.print("<div id='bottom'></div>");
 		
 		out.print("<table border=4 cellspacing='4' cellpadding='5'>");
-		out.print("<tr><td>Reciever&nbsp;	&nbsp;</td><td>SUBJECT</td><th>MESSAGE	&nbsp; 	&nbsp;</td><td>DATE OF RECIEVING 	&nbsp;	&nbsp;</td><td>Permanent<br/>Delete</td></tr>");
+		out.print("<tr><td>Reciever&nbsp;	&nbsp;</td><td>SUBJECT</td><th>MESSAGE	&nbsp; 	&nbsp;</td><td>DATE OF RECIEVING 	&nbsp;	&nbsp;</td><td>Permanent<br/>Delete</td><td>Retrive</td></tr>");
 		for(BinModel m:mails){
 			int id=m.getId();
 			
@@ -90,6 +90,7 @@
 			out.print("<td>" +date + "</td>");
 			
 			out.print("<td><a href='deleteBinboxMail.jsp?id="+m.getId() + "'> Delete</a></td>");
+			out.print("<td><form><a href='retriveMail?id="+m.getId() + "'> Retrive</a></form></td>");
 			out.print("</tr>");
 		
 		}

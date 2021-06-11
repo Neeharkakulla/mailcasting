@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.api.model.UserModel;
+import com.api.service.BinService;
 import com.api.service.RegisterUser;
 import com.api.service.SendMessage;
 import com.api.service.VerifyLogin;
@@ -52,6 +53,10 @@ public class MailCastingController extends HttpServlet {
 			case "/newPasswordRequest":
 				changePassword(request,response);
 				break;
+			case "/retriveMail":
+				retriveFromBin(request,response);
+				break;
+				
 			default:
 					showHome(request,response);
 					break;
@@ -59,6 +64,7 @@ public class MailCastingController extends HttpServlet {
 
 			
 	}
+	
 	
 	private void showHome(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");
@@ -194,6 +200,21 @@ public class MailCastingController extends HttpServlet {
 		}
 		
 	}
+	}
+	private void retriveFromBin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id=Integer.parseInt(request.getParameter("id"));
+			String type=BinService.retriveFromBin(id);
+			if(type.equalsIgnoreCase("inbox")) {
+			RequestDispatcher rd=request.getRequestDispatcher("home.jsp");
+			rd.forward(request, response);
+			}
+			if(type.equalsIgnoreCase("sentbox")) {
+				RequestDispatcher rd=request.getRequestDispatcher("sent.jsp");
+				rd.forward(request, response);
+				}
+		
+		
+		
 	}
 		
 	}

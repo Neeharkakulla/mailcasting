@@ -63,8 +63,7 @@
 				out.print("<td>Password</td>");
 				
 				if((!(success==null))&&(success.equals("success")))
-					out.print("<td><input type='password' >&nbsp;&nbsp;"+
-							"<span style='color: green;'>Success &#10003;</span></td>");
+					out.print("<td><span style='color: green;'>Success &#10003;</span></td>");
 				else if((!(success==null))&&(success.equals("Invalid")))
 					out.print("<td> <form action='validate' method='post'>"+
 							"<input type='hidden' name='id' value="+user.getId()+" readonly>"+
