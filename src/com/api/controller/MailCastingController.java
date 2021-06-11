@@ -46,6 +46,9 @@ public class MailCastingController extends HttpServlet {
 			case "/composeEmail":
 				composeEmail(request,response);
 				break;
+			case "/validate":
+				validatePassword(request,response);
+				break;
 			default:
 					showHome(request,response);
 					break;
@@ -54,6 +57,25 @@ public class MailCastingController extends HttpServlet {
 			
 	}
 	
+	private void validatePassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id=Integer.parseInt(request.getParameter("id"));
+		
+		String password=request.getParameter("password");
+		System.out.println(VerifyLogin.validatePassword(id,password));
+	
+		if(VerifyLogin.validatePassword(id,password)) {
+			request.setAttribute("success", "success");
+			RequestDispatcher rd=request.getRequestDispatcher("myProfile.jsp");
+			rd.include(request, response);
+		}
+		else {
+			request.setAttribute("success", "Invalid");
+			RequestDispatcher rd=request.getRequestDispatcher("myProfile.jsp");
+			rd.include(request, response);
+		}
+		
+		
+	}
 	private void showHome(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");
 		rd.forward(request, response);	

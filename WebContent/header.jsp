@@ -30,7 +30,8 @@
 				
 				<a class="nav-item nav-link" href="logout">LogOut</a>
 				<a class="nav-item nav-link" href="contactus.jsp">Contact Us</a>
-
+				<a class="nav-item nav-link" href="myProfile.jsp">Profile</a>
+				
 			  </div>
 			</div>
 		  </nav>

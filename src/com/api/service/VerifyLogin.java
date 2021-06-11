@@ -24,4 +24,20 @@ public static boolean checkLogin(String email,String password){
 	}
 	return status;
 }
+
+public static boolean validatePassword(int id, String password) {
+	Connection con=DBConnection.getCon();
+	try {
+		PreparedStatement ps=con.prepareStatement("Select * from MAILCASTINGUSER where id = ? and password =?");
+		ps.setInt(1, id);
+		ps.setString(2, password);
+		ResultSet rs=ps.executeQuery();
+		if(rs.next())
+			return true;
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return false;
+}
 }
